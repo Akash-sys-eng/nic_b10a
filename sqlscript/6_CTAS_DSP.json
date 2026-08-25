@@ -1,0 +1,17 @@
+{
+	"name": "6_CTAS_DSP",
+	"properties": {
+		"content": {
+			"query": "CREATE TABLE activityLog\nWITH\n(\n    DISTRIBUTION = ROUND_ROBIN\n) AS SELECT * FROM pqt_ext_table\n\nSELECT * FROM activityLog\nDROP TABLE activityLog",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "datapool",
+				"poolName": "datapool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

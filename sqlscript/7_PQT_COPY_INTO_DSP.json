@@ -1,0 +1,17 @@
+{
+	"name": "7_PQT_COPY_INTO_DSP",
+	"properties": {
+		"content": {
+			"query": "CREATE TABLE ActivityLogTable(\n    [Correlationid] varchar(200),\n    [Operationname] varchar(300),\n    [Status] varchar(100),\n    [Eventcategory] varchar(100),\n    [Level] varchar(100),\n    [Time] varchar(100),\n    [Subscription] varchar(200),\n    [Eventinitiatedby] varchar(1000),\n    [Resourcetype] varchar(300),\n    [Resourcegroup] varchar(1000),\n    [Resource] varchar(2000)\n)\nWITH\n(\n    DISTRIBUTION=ROUND_ROBIN\n)\n\n\nSELECT * FROM ActivityLogTable\n\nCOPY INTO ActivityLogTable\nFROM 'https://nicdatalake11.blob.core.windows.net/data/ActivityLog01.parquet'\nWITH(\n    FILE_TYPE = 'PARQUET',\n    CREDENTIAL =(\n        IDENTITY = 'Shared access signature',\n        SECRET='sv=2026-02-06&ss=bfqt&srt=sco&sp=rwdlacupyx&se=2026-08-20T01:30:29Z&st=2026-08-19T17:15:29Z&spr=https&sig=emPDkw15amM%2B2s4HfEU9R%2F%2Fh5E0Q9MRauvqIT%2B8%2Bmok%3D'\n    )\n)",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "datapool",
+				"poolName": "datapool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

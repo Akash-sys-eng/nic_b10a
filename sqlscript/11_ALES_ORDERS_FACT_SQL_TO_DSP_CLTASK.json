@@ -1,0 +1,17 @@
+{
+	"name": "11_ALES_ORDERS_FACT_SQL_TO_DSP_CLTASK",
+	"properties": {
+		"content": {
+			"query": "CREATE TABLE SalesOrderFact(\n    [SalesOrderID] VARCHAR(300),\n    [OrderDate] VARCHAR(500),\n    [CustomerID] VARCHAR(400),\n    [SubTotal] VARCHAR(700),\n    [TaxAmt] VARCHAR(300),\n    [Freight] VARCHAR(500),\n    [TotalDue] VARCHAR(600),\n    [OrderQty] VARCHAR(300),\n    [ProductID] VARCHAR(500),\n    [UnitPrice] VARCHAR(600),\n    [UnitPriceDiscount] VARCHAR(600),\n    [LineTotal] VARCHAR(500)\n)\nWITH\n(\n    DISTRIBUTION=ROUND_ROBIN\n)\n\n\nSELECT * FROM SalesOrderFact\n\n\nSELECT [ProductID],COUNT([SalesOrderID]) AS 'Count of Sales Orders' FROM SalesOrderFact\nGROUP BY [ProductID]\nORDER BY [ProductID];",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "datapool",
+				"poolName": "datapool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

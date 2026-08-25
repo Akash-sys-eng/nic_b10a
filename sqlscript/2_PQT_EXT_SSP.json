@@ -1,0 +1,17 @@
+{
+	"name": "2_PQT_EXT_SSP",
+	"properties": {
+		"content": {
+			"query": "CREATE EXTERNAL DATA SOURCE pqtdatasource\nWITH\n(\n    LOCATION = 'https://nicdatalake11.blob.core.windows.net/data'\n)\n\nCREATE EXTERNAL FILE FORMAT pqtformat\nWITH\n(\n    FORMAT_TYPE = PARQUET,\n    DATA_COMPRESSION = 'org.apache.hadoop.io.compress.SnappyCodec'\n)\n\nCREATE EXTERNAL TABLE pqtExtTable\n(\n    [Correlationid] varchar(200),\n    [Operationname] varchar(300),\n    [Status] varchar(100),\n    [Eventcategory] varchar(100),\n    [Level] varchar(100),\n    [Time] varchar(100),\n    [Subscription] varchar(200),\n    [Eventinitiatedby] varchar(1000),\n    [Resourcetype] varchar(300),\n    [Resourcegroup] varchar(1000),\n    [Resource] varchar(2000)\n)\nWITH\n(\n    LOCATION = '/ActivityLog01.parquet',\n    DATA_SOURCE = pqtdatasource,\n    FILE_FORMAT = pqtformat\n)\n\nSELECT * FROM pqtExtTable where [Status] = 'Succeeded'\n\n\nSELECT COUNT(*) FROM pqtExtTable",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "mydb",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

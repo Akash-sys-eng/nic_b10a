@@ -1,0 +1,17 @@
+{
+	"name": "1_CSV_EXT_SSP",
+	"properties": {
+		"content": {
+			"query": "CREATE EXTERNAL DATA SOURCE csvdatasource\nWITH\n(\n    LOCATION = 'https://nicdatalake11.blob.core.windows.net/data'\n)\n\nDROP EXTERNAL DATA SOURCE csvdatasource\nDROP EXTERNAL FILE FORMAT csvformat\nDROP EXTERNAL TABLE csvExtTable\n\nCREATE EXTERNAL FILE FORMAT csvformat\nWITH\n(\n    FORMAT_TYPE = DELIMITEDTEXT,\n    FORMAT_OPTIONS(\n        FIELD_TERMINATOR = ',',\n        FIRST_ROW = 2\n    )\n)\n\n\nCREATE EXTERNAL TABLE csvExtTable\n(\n    [Correlationid] varchar(200),\n    [Operationname] varchar(300),\n    [Status] varchar(100),\n    [Eventcategory] varchar(100),\n    [Level] varchar(100),\n    [Time] varchar(100),\n    [Subscription] varchar(200),\n    [Eventinitiatedby] varchar(1000),\n    [Resourcetype] varchar(300),\n    [Resourcegroup] varchar(1000),\n    [Resource] varchar(2000)\n)\nWITH\n(\n    LOCATION = '/ActivityLog01.csv',\n    DATA_SOURCE = csvdatasource,\n    FILE_FORMAT = csvformat\n)\n\n\nSELECT * FROM csvExtTable where Time = '2024-05-30T15:08:15.922Z'\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "mydb",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

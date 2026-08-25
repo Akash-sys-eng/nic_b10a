@@ -1,0 +1,66 @@
+{
+	"name": "SqlPoolTable3",
+	"properties": {
+		"annotations": [],
+		"type": "SqlPoolTable",
+		"schema": [
+			{
+				"name": "SalesOrderID",
+				"type": "varchar"
+			},
+			{
+				"name": "OrderDate",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerID",
+				"type": "varchar"
+			},
+			{
+				"name": "SubTotal",
+				"type": "varchar"
+			},
+			{
+				"name": "TaxAmt",
+				"type": "varchar"
+			},
+			{
+				"name": "Freight",
+				"type": "varchar"
+			},
+			{
+				"name": "TotalDue",
+				"type": "varchar"
+			},
+			{
+				"name": "OrderQty",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductID",
+				"type": "varchar"
+			},
+			{
+				"name": "UnitPrice",
+				"type": "varchar"
+			},
+			{
+				"name": "UnitPriceDiscount",
+				"type": "varchar"
+			},
+			{
+				"name": "LineTotal",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "SalesOrderFact"
+		},
+		"sqlPool": {
+			"referenceName": "datapool",
+			"type": "SqlPoolReference"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

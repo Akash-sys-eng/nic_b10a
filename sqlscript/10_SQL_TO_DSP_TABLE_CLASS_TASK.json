@@ -1,0 +1,17 @@
+{
+	"name": "10_SQL_TO_DSP_TABLE_CLASS_TASK",
+	"properties": {
+		"content": {
+			"query": "CREATE TABLE Address(\n    [AddressID] INT,\n    [AddressLine1] VARCHAR(500),\n    [AddressLine2] VARCHAR(500),\n    [City] VARCHAR(500),\n    [StateProvince] VARCHAR(500),\n    [CountryRegion] VARCHAR(500),\n    [PostalCode] VARCHAR(7000),\n    [rowguid] VARCHAR(600),\n    [ModifiedDate] VARCHAR(1000)\n)\nWITH\n(\n    DISTRIBUTION=ROUND_ROBIN\n)\n\nSELECT * FROM Address\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "datapool",
+				"poolName": "datapool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
